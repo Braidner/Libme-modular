@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      host: ds047085.mongolab.com
+      username: admin
+      password: 1q2w3e
+      database: lib_me
+      port: 47085
+
+server:
+  context-path: /auth
+  port: 5000
