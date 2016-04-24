@@ -1,0 +1,23 @@
+@import "../../base";
+lm-input {
+  position: relative;
+  vertical-align: middle;
+
+  input {
+    padding: 1em;
+    border: 1px solid darkgray;
+    display: block;
+    background: 0 0;
+    line-height: 26px;
+    height: 50px;
+    width: 100%;
+    float: left;
+  }
+
+  .lm-placeholder {
+    margin-bottom: 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+

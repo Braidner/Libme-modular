@@ -1,0 +1,46 @@
+$item-width: 100%;
+$item-height: 327px;
+$poster-height: 245px;
+$name-height: 48px;
+
+@import "../base";
+
+.content-item {
+  padding-top: 20px;
+  //width: $item-width;
+  //height: $item-height;
+  height: 345px;
+
+  .poster {
+    width: $item-width;
+    height: $poster-height;
+    margin-bottom: 10px;
+    //-webkit-transition: box-shadow .2s, transform .2s, opacity .2s;
+    @include transition(0.3s ease-in-out);
+  }
+
+  .name {
+    width: $item-width;
+    line-height: normal;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    max-height: 38px;
+    margin-bottom: 5px;
+  }
+
+  .uploaded {
+    width: $item-width;
+    font-size: 12px;
+    line-height: 19px;
+    line-height: 19px;
+    color: #C3C2C0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .poster {
+      //@include transform(translate(0, -7px));
+      @include box-shadow(0 0 0 6px $select-color,0 0 0 7px $select-color)
+    }
+  }
+}

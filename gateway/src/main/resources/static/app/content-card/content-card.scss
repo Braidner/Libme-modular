@@ -1,0 +1,46 @@
+@import "../base";
+
+$half-width: 590px;
+$background-card: rgba(38, 50, 56, 100);
+
+.content-card {
+  padding-top: 15px;
+
+  &::after {
+    content: '';
+    background: url("http://cdn.shazoo.ru/136056_4ODSJsX9dy_head.jpg") no-repeat center center, linear-gradient(to top, #000000, #7a8485);
+    background-size: cover;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    height: 631px;
+    width: 100%;
+  }
+
+  .player-container {
+
+  }
+
+  .info-container {
+    width: $half-width;
+    .movie-name {
+      font-size: 30px;
+      font-family: "Roboto-Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .short-details {
+      font-size: 16px;
+      color: $font-gray;
+      margin-bottom: 40px;
+    }
+
+    .description {
+      font-size: 20px;
+    }
+  }
+}

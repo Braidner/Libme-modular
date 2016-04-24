@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Title</title>
+
+    <!-- Custom Fonts -->
+    <link href="lib/font/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Important Owl stylesheet -->
+    <link rel="stylesheet" href="lib/owl-carousel/assets/owl.carousel.css">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="dist/all.min.css" rel="stylesheet"/>
+
+
+</head>
+<body ng-app="App">
+
+<nav class="fixed-top" ng-controller="NavigationCtrl">
+    <div class="container content center-block">
+        <div class="row">
+            <div id="logo" class="col-md-2">
+                <a href="/"><img src="/lib/image/logo.svg"></a>
+            </div>
+            <menu class="col-md-8">
+                <ul>
+                    <li ng-click="selectTab(tab)" ng-class="{'active-menu': activeTab == tab.id}" ng-repeat="tab in tabs">
+                        <a ng-href="{{tab.id}}">{{tab.name}}</a>
+                    </li>
+                    <div class="menu-indicator"></div>
+                </ul>
+            </menu>
+
+            <div class="search col-md-1"><a ng-href="/upload"><img src="lib/image/search.svg"></a></div>
+            <div class="profile col-md-1" ng-class="{'active-menu': activeTab === '/profile'}"><a ng-href="/profile"><img src="lib/image/person-outline.svg"></a></div>
+        </div>
+    </div>
+</nav>
+
+<div class="fast-upload" ng-if="activeTab === '/' || activeTab === '/upload'" ng-include="'app/upload/fast-upload.html'"></div>
+<div class="recent" ng-if="activeTab === '/'" ng-include="'app/recent/recent.html'" ng-controller="RecentCtrl"></div>
+
+<ng-view>Loading angular module</ng-view>
+
+<footer class="footer">
+    <div class="container center-block">
+        <div class="row">
+            <p class="text-center">Copyright here</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Bootstrap -->
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script> <!-- TODO copy to static -->
+<script src="lib/owl-carousel/owl.carousel.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Scripts -->
+<script src="lib/angular/angular.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-route.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-animate.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-messages.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-resource.min.js" type="text/javascript"></script>
+
+<script src="dist/all.min.js" type="text/javascript"></script>
+<script src="lib/video/clappr.min.js" type="text/javascript"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-67321255-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+</html>

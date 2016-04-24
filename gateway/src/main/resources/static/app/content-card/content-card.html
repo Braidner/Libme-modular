@@ -1,0 +1,31 @@
+<div class="content-card content container center-block">
+    <div class="row">
+        <div class="player-container col-md-6">
+            <div id="player"></div>
+            <div class="buttons">
+                <span class="download">Скачать</span>
+            </div>
+        </div>
+        <div class="info-container col-md-6">
+            <div class="movie-name">Зверополис</div>
+            <div class="short-details">CША / 2015 / 187 мин. / DVDScr / 16+</div>
+            <div class="description">Добро пожаловать в Зверополис — современный город, населенный самыми разными
+                животными, от огромных слонов до крошечных мышек. Зверополис разделен на районы, полностью повторяющие
+                естественную среду обитания разных жителей — здесь есть и элитный район Площадь Сахары и неприветливый
+                Тундратаун.
+            </div>
+            <div class="info-types">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var player = new Clappr.Player({
+        source: "/video/stream.m3u8",
+//        baseUrl: "http://example.com/assets/clappr",
+        parentId: "#player",
+        height: '321px',
+        width: 'auto',
+        poster: "https://i.ytimg.com/vi/hIMCJNAcuJE/maxresdefault.jpg"
+    });
+</script>

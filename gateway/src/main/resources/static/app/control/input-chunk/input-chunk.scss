@@ -1,0 +1,16 @@
+.chunk {
+  height: 40px;
+  width: auto;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: solid 1px #c4c3c0;
+  padding: 10px;
+  font-size: 18px;
+  margin-right: 30px;
+  display: inline-block;
+  margin-top: 10px;
+
+  .delete {
+    //float: right;
+  }
+}

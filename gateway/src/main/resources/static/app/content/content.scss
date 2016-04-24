@@ -1,0 +1,27 @@
+@import "../base";
+
+$phone: "(max-width: 767px)";
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 992px)";
+$large-desktop: "(min-width: 1200px)";
+$extra-large-desktop: "(min-width: 1600px)";
+
+
+
+.content {
+  @media #{$phone} {
+    width: auto;
+  }
+  @media #{$tablet} {
+    width: 654px;
+  }
+  @media #{$desktop} {
+    width: 790px;
+  }
+  @media #{$large-desktop} {
+    width: 1200px;
+  }
+  //@media #{$extra-large-desktop} {
+  //  width: 1500px;
+  //}
+}

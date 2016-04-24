@@ -1,0 +1,10 @@
+<div class="content-item col-lg-2 col-md-3 col-sm-4 col-xs-5 col-xs-offset-1  col-sm-offset-0">
+    <div class="poster" background="{{item.poster}}">
+    </div>
+    <div class="name">
+        {{item.name | limitTo:22}}<span ng-if="item.name.length > 22">...</span>
+    </div>
+    <div class="uploaded">
+        10.01.2016
+    </div>
+</div>

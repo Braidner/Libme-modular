@@ -1,0 +1,75 @@
+$background-color: rgba(11, 22, 18, 0.7);
+$font-color: white;
+$font-gray: #C4C4C0;
+$font-size: 20px;
+$select-color: #F7CE40;
+
+$container-padding: 10%;
+
+@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+
+@font-face {
+  font-family: Roboto-Regular;
+  src: url('../lib/font/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: Roboto-Medium;
+  src: url('../lib/font/Roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Roboto-Light;
+  src: url('../lib/font/Roboto/Roboto-Light.ttf') format('truetype');
+}
+
+@mixin material-shadow {
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.16), 5px 5px 5px 5px rgba(0,0,0,0.12);
+}
+
+a {
+  &:hover {
+    color: $select-color;
+  }
+  text-decoration: none !important;
+}
+
+* {
+  color: $font-color;
+  @include box-sizing(border-box);
+  &:after, &:hover {
+    @include box-sizing(border-box);
+  }
+}
+
+body {
+  //padding-top: 80px;
+  background-image: linear-gradient(to bottom, #263238, #212121);
+  font-size: $font-size;
+  line-height: 24px;
+  font-family: "Roboto-Light", serif;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: $select-color;
+}
+ng-view > .container {
+  padding-top: 80px;
+  padding-bottom: 81px;
+}

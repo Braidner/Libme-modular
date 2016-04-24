@@ -1,0 +1,152 @@
+@import "base";
+@import "upload/upload";
+@import "compass/utilities/general/clearfix";
+
+$nav-background: #0B1612;
+$nav-height: 80px;
+$select-bar-color: rgb(255, 82, 82);
+$number-of-tabs: 5;
+
+nav {
+  display: flex;
+  &::before {
+    width: 100%;
+    height: $nav-height;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $background-color;
+    z-index: -1;
+    //opacity: 0.8;
+  }
+  align-items: center;
+  img {
+    vertical-align: middle !important;
+  }
+  justify-content: space-between;
+  //background: $nav-background;
+  height: $nav-height;
+  @include box-shadow(0 1px 6px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.23));
+
+  #logo {
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .active-menu {
+    a {
+      color: $select-color;
+    }
+    i {
+      color: $select-color;
+    }
+  }
+
+  menu {
+
+    ul {
+      width: 100%;
+      display: flex;
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      height: $nav-height;
+      margin: 0 auto;
+      white-space: nowrap;
+
+      li {
+        @include flex-grow(1);
+        display: inline;
+        float: left;
+        text-align: center;
+        line-height: 80px;
+
+        a {
+          padding: 0 28px 0 28px;
+          font-size: 16px;
+          color: $font-color;
+          display: block;
+          width: 100%;
+          height: 100%;
+          transition: color .28s ease;
+        }
+      }
+
+      .menu-indicator {
+        position: absolute;
+        bottom: 0;
+        height: 4px;
+        color: $select-color;
+        background: $select-color;
+        left: 0;
+        top: calc(100% - 4px);
+        //transition: left 0.3s ease-out, rigth 0.3s ease-out;
+
+        will-change: left, right;
+
+        &.left {
+          @include transition(left .125s cubic-bezier(.35, 0, .25, 1), right .25s cubic-bezier(.35, 0, .25, 1))
+        }
+
+        &.right {
+          @include transition(left .25s cubic-bezier(.35, 0, .25, 1), right .125s cubic-bezier(.35, 0, .25, 1))
+        }
+      }
+    }
+  }
+
+  .search, .profile {
+    height: 80px;
+    padding-top: 29px;
+    padding-bottom: 29px;
+    rotation: 180deg;
+    a {
+      float: right;
+    }
+
+    img {
+      height: 22px;
+    }
+  }
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.button {
+  height: 50px;
+  width: 100%;
+  border: none;
+  background-color: $select-color;
+  font-size: 18px;
+
+  &:focus, &:hover {
+    background-color: #f6bb42;
+  }
+}
+
+@import "content/content";
+@import "content-card/content-card";
+@import "recent/recent";
+@import "item/item";
+@import "control/input/input-control";
+@import "control/url-parser-control/url-parser-control";
+@import "control/input-chunk/input-chunk";

@@ -1,0 +1,4 @@
+<lm-input ng-model="chunk"><ng-transclude></ng-transclude></lm-input>
+<div style="margin-top: 50px">
+    <div ng-repeat="chunk in bindModel" class="chunk">{{chunk}} <span class="delete"><i class="fa fa-times" aria-hidden="true"></i></span></div>
+</div>

@@ -1,0 +1,38 @@
+$background-color: #1a1b1d;
+$container-height: 413px;
+
+@import "../base";
+
+.recent {
+  background: $background-color;
+  height: $container-height;
+  overflow: hidden;
+
+  h3 {
+    color: #C3C2C0;
+    padding-top: 35px;
+    //padding-bottom: 20px;
+  }
+
+  .content-item {
+    margin-right: 40px;
+  }
+
+  &.ng-enter, &.ng-leave {
+    @include transition(height cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s);
+  }
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    height: 0;
+  }
+
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    height: $container-height;
+  }
+
+  //.owl-controls {
+  //  display: none !important;
+  //}
+}

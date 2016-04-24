@@ -1,0 +1,69 @@
+@import "../base";
+
+//input {
+//  border: 1px solid darkgray;
+//  width: 100%;
+//  float: left;
+//  background: 0 0;
+//  height: 50px;
+//  padding: 1em;
+//}
+
+.yellow {
+  color: $select-color;
+}
+
+.upload-container {
+  h2 {
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
+
+  letter-spacing: 1px;
+
+  .row {
+    padding-bottom: 50px;
+  }
+
+  .input-video {
+    cursor: pointer;
+    height: 80px;
+    border-top: 1px solid $select-color;
+    border-bottom: 1px solid $select-color;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+    .empty {
+      i {
+        color: $select-color;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.fast-upload {
+  padding-top: 110px;
+  padding-bottom: 70px;
+  background: url(/lib/image/deadpool.png) no-repeat center center;
+
+  h4 {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin-bottom: 23px;
+  }
+}

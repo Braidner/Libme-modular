@@ -1,0 +1,142 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+@font-face {
+  font-family: Roboto-Regular;
+  src: url("../lib/font/Roboto/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto-Medium;
+  src: url("../lib/font/Roboto/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: Roboto-Light;
+  src: url("../lib/font/Roboto/Roboto-Light.ttf") format("truetype");
+}
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  color: #F7CE40;
+}
+
+* {
+  color: white;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:after, *:hover {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to bottom, #263238, #212121);
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "Roboto-Light", serif;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #F7CE40;
+}
+
+ng-view > .container {
+  padding-top: 80px;
+  padding-bottom: 81px;
+}
+
+.recent {
+  background: rgba(11, 22, 18, 0.7);
+  height: 413px;
+  overflow: hidden;
+}
+.recent h3 {
+  color: #C3C2C0;
+  padding-top: 35px;
+}
+.recent .content-item {
+  margin-right: 40px;
+}
+.recent.ng-enter, .recent.ng-leave {
+  -moz-transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.recent.ng-enter, .recent.ng-leave.ng-leave-active {
+  height: 0;
+}
+.recent.ng-leave, .recent.ng-enter.ng-enter-active {
+  height: 413px;
+}
