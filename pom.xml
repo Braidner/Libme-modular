@@ -28,6 +28,7 @@
         <module>gateway</module>
         <module>registry</module>
         <module>auth</module>
+        <module>content</module>
     </modules>
 
     <dependencyManagement>

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Braidner
  */
-@Document(collection = "users")
+@Document(collection = "Users")
 public class User implements UserDetails {
 
     @Id
