@@ -17,10 +17,10 @@ import java.util.List;
 public class ContentController {
 
     @Autowired
-    private ContentService contentService;
+    private ContentService serverContentService;
 
     @RequestMapping(name = "/recent", method = RequestMethod.GET)
     public List<Content> resent() {
-        return contentService.findResent();
+        return serverContentService.findResent();
     }
 }

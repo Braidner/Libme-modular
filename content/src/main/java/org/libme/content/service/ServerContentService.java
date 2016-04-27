@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Braidner
  */
 @Service
-public class ContentServiceRemote implements ContentService {
+public class ServerContentService implements ContentService {
 
     @Autowired
     private ContentRepository contentRepository;
