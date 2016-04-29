@@ -16,5 +16,5 @@ after_success:
   # CONFIG SERVICE
   - export CONFIG=braidneb/libme-config
   - docker build -t $CONFIG ./config
-  - docker tag $CONFIG $CONFIG:$TAG
+  - docker tag -f $CONFIG $CONFIG:$TAG
   - docker push $CONFIG
