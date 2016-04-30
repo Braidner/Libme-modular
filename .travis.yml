@@ -18,3 +18,27 @@ after_success:
   - docker build -t $CONFIG ./config
   - docker tag -f $CONFIG $CONFIG:$TAG
   - docker push $CONFIG
+
+  # REGISTRY SERVICE
+  - export REGISTRY=braidneb/libme-registry
+  - docker build -t $REGISTRY ./registry
+  - docker tag -f $REGISTRY $REGISTRY:$TAG
+  - docker push $REGISTRY
+
+  # GATEWAY SERVICE
+  - export GATEWAY=braidneb/libme-gateway
+  - docker build -t $GATEWAY ./gateway
+  - docker tag -f $GATEWAY $GATEWAY:$TAG
+  - docker push $GATEWAY
+
+  # AUTH SERVICE
+  - export AUTH=braidneb/libme-auth
+  - docker build -t $AUTH ./auth
+  - docker tag -f $AUTH $AUTH:$TAG
+  - docker push $AUTH
+
+  # CONTENT SERVICE
+  - export CONTENT=braidneb/libme-content
+  - docker build -t $CONTENT ./content
+  - docker tag -f $CONTENT $CONTENT:$TAG
+  - docker push $CONTENT
