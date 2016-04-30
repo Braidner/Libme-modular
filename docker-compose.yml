@@ -1,1 +1,35 @@
 version: '2'
+services:
+  config:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: ./config
+    restart: always
+    ports:
+      - 8888:8888
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  registry:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: ./registry
+    ports:
+      - 8761:8761
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  gateway:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: ./gateway
+    ports:
+      - 80:4000
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
