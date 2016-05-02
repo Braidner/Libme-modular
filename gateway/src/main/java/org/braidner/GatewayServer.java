@@ -15,4 +15,6 @@ public class GatewayServer {
     public static void main(String[] args) {
         SpringApplication.run(GatewayServer.class, args);
     }
+
+
 }

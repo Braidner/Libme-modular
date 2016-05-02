@@ -14,3 +14,6 @@ security:
   user:
     password: ${CONFIG_SERVICE_PASSWORD}
 
+management:
+  context_path: /admin
+

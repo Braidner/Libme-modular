@@ -18,7 +18,7 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        url: http://localhost:5000
+        url: http://${auth-service.hostname:auth}:5000
         stripPrefix: false
 
     account-service:

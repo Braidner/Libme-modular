@@ -33,3 +33,14 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+  auth:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+    build: ./auth
+    ports:
+      - 5000:5000
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
