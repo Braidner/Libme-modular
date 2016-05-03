@@ -3,6 +3,19 @@
 [![Build Status](https://travis-ci.org/Braidner/Libme-modular.svg?branch=master)](https://travis-ci.org/Braidner/Libme-modular)
 
 ## Setup
+Add path variables
+```
+CONFIG_SERVICE_PASSWORD
+CONTENT_SERVICE_PASSWORD
+```
+
+And path variables for testing
+```
+config.hostname	with value localhost
+auth-service with value	localhost
+registry.hostname with value localhost
+```
+
 Packaging maven with
 ```
  mvn package
