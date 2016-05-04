@@ -17,7 +17,11 @@ public class ServerContentService implements ContentService {
     private ContentRepository contentRepository;
 
     public List<Content> findResent() {
-        return contentRepository.findByName("%%");
+        return contentRepository.findAll();
+    }
+
+    public void createContent(Content content) {
+
     }
 
 }

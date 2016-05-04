@@ -11,9 +11,7 @@ CONTENT_SERVICE_PASSWORD
 
 And path variables for testing
 ```
-config.hostname	with value localhost
-auth-service with value	localhost
-registry.hostname with value localhost
+DEBUG_HOSTNAME	with value localhost
 ```
 
 Packaging maven with

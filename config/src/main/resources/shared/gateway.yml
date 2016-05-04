@@ -18,12 +18,12 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        url: http://${auth-service.hostname:auth}:5000
+        url: http://${DEBUG_HOSTNAME:auth}:5000
         stripPrefix: false
 
-    account-service:
-        path: /accounts/**
-        serviceId: account-service
+    content-service:
+        path: /content/**
+        serviceId: content-service
         stripPrefix: false
 
     statistics-service:

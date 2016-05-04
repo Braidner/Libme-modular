@@ -44,3 +44,25 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+  content:
+    environment:
+      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+      CONTENT_SERVICE_PASSWORD: $CONTENT_SERVICE_PASSWORD
+    build: ./content
+    ports:
+      - 6000:6000
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 15672:15672
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"

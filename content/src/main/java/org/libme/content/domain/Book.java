@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Braidner
  */
-public class Book extends BaseContent {
+public class Book extends Content {
 
     public final static ContentType TYPE = ContentType.BOOK;
 

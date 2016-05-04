@@ -13,13 +13,12 @@ import java.util.List;
  * Created by Braidner
  */
 @RestController
-@RequestMapping("/content")
 public class ContentController {
 
     @Autowired
     private ContentService serverContentService;
 
-    @RequestMapping(name = "/recent", method = RequestMethod.GET)
+    @RequestMapping(path = "/recent", method = RequestMethod.GET)
     public List<Content> resent() {
         return serverContentService.findResent();
     }

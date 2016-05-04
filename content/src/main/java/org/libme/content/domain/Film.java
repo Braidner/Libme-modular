@@ -3,7 +3,7 @@ package org.libme.content.domain;
 /**
  * Created by Braidner
  */
-public class Film extends BaseContent {
+public class Film extends Content {
 
     public static final ContentType TYPE = ContentType.FILM;
 
