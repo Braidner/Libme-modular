@@ -24,4 +24,4 @@ security:
 
 spring:
   rabbitmq:
-    host: rabbitmq
+    host: ${DEBUG_HOSTNAME:rabbitmq}

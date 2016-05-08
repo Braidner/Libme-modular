@@ -5,13 +5,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Braidner
  */
 @Document(collection = "content")
-public abstract class Content {
+public abstract class Content implements Serializable {
     @Id
     private String id;
 
