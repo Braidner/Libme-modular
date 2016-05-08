@@ -25,12 +25,12 @@ Then start docker compose with
 open http://localhost/ or http://docker.local/
 
 #TODO list
-## Upload content
+## Content service
 - [ ] Доверстать форму загрузки
 - [ ] Сделать рест сервис сохранения формы
 - [ ] Сделать возвожность аплоада файлов
 
-## Registration
+## Registration service
 - [ ] Сверстать форму регистрации
 - [ ] Сделать сервис создания пользователя
 - [ ] Сверстать форму авторизации
