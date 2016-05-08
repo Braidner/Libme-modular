@@ -24,22 +24,22 @@ Then start docker compose with
 ```
 open http://localhost/ or http://docker.local/
 
-#TODO list
-## Content service
+##TODO list
+### Content service
 - [ ] Доверстать форму загрузки
 - [ ] Сделать рест сервис сохранения формы
 - [ ] Сделать возвожность аплоада файлов
 
-## Registration service
+### Registration service
 - [ ] Сверстать форму регистрации
 - [ ] Сделать сервис создания пользователя
 - [ ] Сверстать форму авторизации
 - [ ] Сделать в андгуларе сервис авторизации и обновления токенов
 
-## Torrent service
+### Torrent service
 - [ ] Реализовать торрент севрис
 - [ ] Реализовать нотификацию торрент-сервиса
 
-## Convert service
+### Convert service
 - [ ] Сделать докер образ с установленным ffmpeg
 - [ ] Сделать сервис конвертирующий видео файлы в стрименговые
