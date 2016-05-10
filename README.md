@@ -21,6 +21,8 @@ Packaging maven with
 Then start docker compose with
 ```
  docker-compose up -d --rebuild
+ or
+ docker-compose up -d --force-recreate
 ```
 open http://localhost/ or http://docker.local/
 
