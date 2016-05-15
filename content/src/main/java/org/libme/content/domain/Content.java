@@ -58,6 +58,24 @@ public abstract class Content implements Serializable {
         this.posterUrl = posterUrl;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Content content = (Content) o;
+
+        if (id != null ? !id.equals(content.id) : content.id != null) return false;
+        return name != null ? name.equals(content.name) : content.name == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 
     public enum ContentType {
         FILM,
