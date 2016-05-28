@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: content-service
+  cloud:
+    config:
+      uri: http://${DEBUG_HOSTNAME:config}:8888
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: user
+      enabled: false
+      discovery:
+        enabled: false
+logging:
+  level:
+    feign: DEBUG
+security:
+  oauth2:
+    client:
+      enabled: false
+      use-current-uri: true
+      access-token-uri: http://test.com/
