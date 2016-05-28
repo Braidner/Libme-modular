@@ -24,7 +24,7 @@ public class ContentDiscoveryServiceTest {
     private ContentDiscoveryService discoveryService;
 
     private FilmDiscovery film;
-    private String kinopoiskId;
+    private String kinopoiskId = "814016";
 
     @Before
     public void setUp() throws Exception {

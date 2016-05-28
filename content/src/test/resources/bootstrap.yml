@@ -19,3 +19,10 @@ security:
       enabled: false
       use-current-uri: true
       access-token-uri: http://test.com/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

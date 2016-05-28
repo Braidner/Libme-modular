@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by Braidner
  */
 @FeignClient(url = "http://api.kinopoisk.cf/", name = "KinopoiskClient")
+@FunctionalInterface
 public interface ContentDiscoveryClient {
 
     @RequestMapping(method = RequestMethod.GET, path = "/getFilm?filmID={id}")

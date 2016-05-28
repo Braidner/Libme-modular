@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ContentDiscoveryService {
-    public String IMAGE_URL_TEMPLATE = "http://st.kp.yandex.net/images/film_big/%s.jpg";
+    private static final String IMAGE_URL_TEMPLATE = "http://st.kp.yandex.net/images/film_big/%s.jpg";
 
     @Autowired
     private ContentDiscoveryClient discoveryClient;

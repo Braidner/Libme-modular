@@ -14,18 +14,4 @@ public class ContentController {
 
     @Autowired
     private ContentService serverContentService;
-
-//    @Autowired
-//    private RabbitTemplate rabbitTemplate;
-//
-//    @Bean
-//    public Queue testQueue() {
-//        return new Queue(CONTENT_QUEUE);
-//    }
-//
-//    @RequestMapping(path = "/recent", method = RequestMethod.GET)
-//    public List<Content> resent() {
-//        rabbitTemplate.convertAndSend(CONTENT_QUEUE, "Test message");
-//        return serverContentService.findResent();
-//    }
 }
