@@ -30,6 +30,8 @@
         <module>registry</module>
         <module>auth</module>
         <module>content</module>
+        <!--<module>file-service</module>-->
+        <!--<module>torrent-service</module>-->
     </modules>
 
     <dependencyManagement>
@@ -37,7 +39,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.BUILD-SNAPSHOT</version>
+                <version>RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
