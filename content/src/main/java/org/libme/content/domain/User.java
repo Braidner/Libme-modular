@@ -3,11 +3,12 @@ package org.libme.content.domain;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Braidner
  */
-public class User {
+public class User implements Serializable {
 
     @NotNull
     @Length(min = 3, max = 25)
