@@ -2,7 +2,7 @@ package org.libme.content.service;
 
 import org.libme.content.domain.Content;
 import org.libme.content.domain.Film;
-import org.libme.content.domain.User;
+import org.libme.model.domain.User;
 import org.libme.content.repository.ContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

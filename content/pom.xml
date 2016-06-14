@@ -74,6 +74,12 @@
             <version>2.1.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.libme</groupId>
+            <artifactId>model</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

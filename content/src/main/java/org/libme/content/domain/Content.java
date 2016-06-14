@@ -1,5 +1,6 @@
 package org.libme.content.domain;
 
+import org.libme.model.domain.User;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -32,6 +32,7 @@
         <module>content</module>
         <!--<module>file-service</module>-->
         <module>torrent-service</module>
+        <module>model</module>
     </modules>
 
     <dependencyManagement>

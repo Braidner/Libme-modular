@@ -1,4 +1,4 @@
-package org.libme.content.service;
+package org.libme.model.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

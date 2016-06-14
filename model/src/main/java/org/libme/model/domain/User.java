@@ -1,4 +1,4 @@
-package org.libme.content.domain;
+package org.libme.model.domain;
 
 import org.hibernate.validator.constraints.Length;
 

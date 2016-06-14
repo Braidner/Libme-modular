@@ -19,3 +19,6 @@ spring:
 server:
   context-path: /torrent
   port: 7000
+torrent:
+  downloads:
+    folder: c:/downloads
