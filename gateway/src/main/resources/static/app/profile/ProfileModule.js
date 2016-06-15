@@ -26,9 +26,7 @@
         }
     }
 
-    function ProfileCtrl($scope) {
-        'ngInject';
-        
+    function ProfileCtrl() {
     }
     
 })();

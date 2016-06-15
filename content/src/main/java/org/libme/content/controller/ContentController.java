@@ -1,5 +1,6 @@
 package org.libme.content.controller;
 
+import org.libme.content.client.TorrentClient;
 import org.libme.content.domain.Content;
 import org.libme.content.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,13 @@ public class ContentController {
     @Autowired
     private ContentService serverContentService;
 
+    @Autowired
+    private TorrentClient torrentClient;
+
     @RequestMapping(method = RequestMethod.POST)
     public String uploadContent(Content content, MultipartFile file) {
 
+        torrentClient.downloadTorrent(file); //TODO  send meta info like name, save folder etc.
         return "";
     }
 }

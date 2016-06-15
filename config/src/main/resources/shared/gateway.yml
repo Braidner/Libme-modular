@@ -17,23 +17,18 @@ zuul:
 
   routes:
     auth-service:
-        path: /auth/**
+        path: /api/auth/**
         url: http://${DEBUG_HOSTNAME:auth}:5000
         stripPrefix: false
 
     content-service:
-        path: /content/**
+        path: /api/content/**
         serviceId: content-service
         stripPrefix: false
 
-    statistics-service:
-        path: /statistics/**
-        serviceId: statistics-service
-        stripPrefix: false
-
     notification-service:
-        path: /notifications/**
-        serviceId: notification-service
+        path: /api/torrent/**
+        serviceId: torrent-service
         stripPrefix: false
 
 server:

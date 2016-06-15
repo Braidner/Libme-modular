@@ -1,9 +1,9 @@
 spring:
   application:
     name: gateway
-  cloud:
-    config:
-      uri: http://${DEBUG_HOSTNAME:config}:8888
-      fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD}
-      username: user
+#  cloud:
+#    config:
+#      uri: http://${DEBUG_HOSTNAME:config}:8888
+#      fail-fast: true
+#      password: ${CONFIG_SERVICE_PASSWORD}
+#      username: user
