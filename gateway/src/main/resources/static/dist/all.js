@@ -58,7 +58,7 @@
 
     NavigationCtrl.$inject = ['$scope'];
     function NavigationCtrl ($scope) {
-        $scope.$on('$routeChangeStart', function (event, current) {
+        $scope.$on('$routeChangeSuccess', function (event, current) {
             var totalWidth = $('menu ul').width();
             $("menu ul li").each(function (index, el) {
                 var width = $(el).outerWidth();
@@ -254,18 +254,6 @@ angular.module('UploadModule', ['ngResource']);
     
 })();
 /**
- * Created by goodl on 4/2/2016.
- */
-(function() {
-    "use strict";
-
-    angular.module('ControlsModule', [
-        'control.input-control', 
-        'control.parser',
-        'control.input-chunk'
-    ]);
-})();
-/**
  * Created by goodl on 3/9/2016.
  */
 (function () {
@@ -291,6 +279,18 @@ angular.module('UploadModule', ['ngResource']);
             templateUrl: '/app/item/item.html'
         };
     }
+})();
+/**
+ * Created by goodl on 4/2/2016.
+ */
+(function() {
+    "use strict";
+
+    angular.module('ControlsModule', [
+        'control.input-control', 
+        'control.parser',
+        'control.input-chunk'
+    ]);
 })();
 (function () {
     'use strict';
@@ -564,27 +564,6 @@ angular.module('UploadModule', ['ngResource']);
         return self;
     }
 })();
-(function () {
-    angular.module('control.input-chunk', []);
-    angular.module('control.input-chunk')
-        .directive('lmInputChunk', inputChunk);
-    
-    
-    function inputChunk() {
-        return {
-            scope: {
-                bindModel:'=ngModel'
-            },
-            require: 'ngModel',
-            // replace: true,
-            transclude: true,
-            'templateUrl': '/app/control/input-chunk/input-chunk.html',
-            link: function (scope, elem, attr, ngModel) {
-                "use strict";
-            }
-        };
-    }
-})();
 /**
  * Created by goodl on 4/2/2016.
  */
@@ -609,6 +588,27 @@ function lmInput() {
         }
     };
 }
+(function () {
+    angular.module('control.input-chunk', []);
+    angular.module('control.input-chunk')
+        .directive('lmInputChunk', inputChunk);
+    
+    
+    function inputChunk() {
+        return {
+            scope: {
+                bindModel:'=ngModel'
+            },
+            require: 'ngModel',
+            // replace: true,
+            transclude: true,
+            'templateUrl': '/app/control/input-chunk/input-chunk.html',
+            link: function (scope, elem, attr, ngModel) {
+                "use strict";
+            }
+        };
+    }
+})();
 /**
  * Created by KuznetsovNE on 04.04.2016.
  */

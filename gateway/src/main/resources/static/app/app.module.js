@@ -58,7 +58,7 @@
 
     NavigationCtrl.$inject = ['$scope'];
     function NavigationCtrl ($scope) {
-        $scope.$on('$routeChangeStart', function (event, current) {
+        $scope.$on('$routeChangeSuccess', function (event, current) {
             var totalWidth = $('menu ul').width();
             $("menu ul li").each(function (index, el) {
                 var width = $(el).outerWidth();
