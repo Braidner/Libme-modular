@@ -145,10 +145,13 @@ ng-view > .container {
   align-content: center;
   flex-direction: column;
 }
-.upload-container .input-video .empty i {
+.upload-container .input-video label {
+  cursor: pointer;
+}
+.upload-container .input-video i {
   color: #F7CE40;
 }
-.upload-container .input-video .empty span {
+.upload-container .input-video span {
   font-size: 14px;
 }
 

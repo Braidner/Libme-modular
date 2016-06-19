@@ -42,13 +42,15 @@
     align-content: center;
     flex-direction: column;
 
-    .empty {
-      i {
-        color: $select-color;
-      }
-      span {
-        font-size: 14px;
-      }
+    label {
+      cursor: pointer;
+    }
+
+    i {
+      color: $select-color;
+    }
+    span {
+      font-size: 14px;
     }
   }
 }

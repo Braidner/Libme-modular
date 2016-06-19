@@ -1,0 +1,21 @@
+<div class="container content" ng-controller="LoginController as login">
+    <form name="authForm" ng-submit="login.auth(login.email, login.password)">
+        <div class="row">
+            <lm-input class="col-md-offset-2 col-md-8" ng-model="login.email">
+                E-mail<span class="yellow">*</span>
+            </lm-input>
+        </div>
+
+        <div class="row">
+            <lm-input class="col-md-offset-2 col-md-8" ng-model="login.password">
+                Введите пароль<span class="yellow">*</span>
+            </lm-input>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="button" type="submit">Войти</button>
+            </div>
+        </div>
+    </form>
+</div>

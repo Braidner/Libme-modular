@@ -11,23 +11,26 @@ ribbon:
   ConnectTimeout: 20000
 
 zuul:
+  ignoredServices: '*'
+  prefix: /api
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
 
   routes:
     auth-service:
-        path: /api/auth/**
-        url: http://${DEBUG_HOSTNAME:auth}:5000
+        path: /auth/**
+        url: http://localhost:5000
+        sensitiveHeaders: FuckingHackForZUULfilterCouseHeDropsAuthHeader
         stripPrefix: false
 
     content-service:
-        path: /api/content/**
+        path: /content/**
         serviceId: content-service
         stripPrefix: false
 
-    notification-service:
-        path: /api/torrent/**
+    torrent-service:
+        path: /torrent/**
         serviceId: torrent-service
         stripPrefix: false
 

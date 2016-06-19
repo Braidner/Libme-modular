@@ -1,0 +1,34 @@
+{
+  "name": "lib_me",
+  "version": "0.1.0",
+  "description": "cloud library",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Braidner/LibMe.git"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "Braidner",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-jshint": "latest",
+    "gulp-concat": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-ng-annotate": "latest",
+    "gulp-compass": "latest",
+    "clappr": "latest",
+    "gulp-clean-css": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/Braidner/LibMe/issues"
+  },
+  "homepage": "https://github.com/Braidner/LibMe#readme"
+}

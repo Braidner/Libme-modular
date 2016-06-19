@@ -16,7 +16,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('minify', function(){
-    gulp.src('./app/**/*.js')
+    gulp.src(['./app/**/*.module.js', './app/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(concat('all.js'))
         .pipe(gulp.dest('./dist'))
@@ -25,6 +25,16 @@ gulp.task('minify', function(){
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist'));
+
+    // gulp.src('./app/**/*.js')
+    //     .pipe(sourcemaps.init())
+    //     .pipe(concat('all.js'))
+    //     .pipe(gulp.dest('./dist'))
+    //     .pipe(rename('all.min.js'))
+    //     .pipe(ngAnnotate())
+    //     .pipe(uglify())
+    //     .pipe(sourcemaps.write())
+    //     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('compass', function() {

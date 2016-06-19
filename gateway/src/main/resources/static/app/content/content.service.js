@@ -3,11 +3,11 @@
  */
 (function () {
     "use strict";
-    angular.module('ContentServices', ['ngResource']).service('ContentService', ContentService);
+    angular.module('ContentServices', ['ngResource'])
+        .factory('ContentService', ContentService);
 
+    ContentService.$inject = ['$resource'];
     function ContentService($resource) {
-        "ngInject";
-
         var self = this;
         var Content = $resource('/rest/content', {}, {});
         self.findContent = findContent;

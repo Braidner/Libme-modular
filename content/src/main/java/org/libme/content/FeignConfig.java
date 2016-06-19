@@ -8,13 +8,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by Braidner
  */
 @Configuration
 public class FeignConfig {
+
     @Autowired
-    public FeignConfig(HttpMessageConvertersAutoConfiguration convertersConfiguration) {
+    private HttpMessageConvertersAutoConfiguration convertersConfiguration;
+
+    @PostConstruct
+    public void init() {
         HttpMessageConverters messageConverters = convertersConfiguration.messageConverters();
         messageConverters.getConverters().stream().filter(converter -> converter instanceof MappingJackson2HttpMessageConverter).forEach(converter -> {
             MappingJackson2HttpMessageConverter jsonConverter = (MappingJackson2HttpMessageConverter) converter;

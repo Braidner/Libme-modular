@@ -9,6 +9,7 @@
         'ngAnimate',
 
         //Modules
+        'app.auth',
         'ContentModule',
         'ControlsModule',
         'ContentCardModule',

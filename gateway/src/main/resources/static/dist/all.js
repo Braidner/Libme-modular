@@ -9,6 +9,7 @@
         'ngAnimate',
 
         //Modules
+        'app.auth',
         'ContentModule',
         'ControlsModule',
         'ContentCardModule',
@@ -173,16 +174,35 @@
         $scope.content = ContentService.findContent(null, 'Serial');
     }
 })();
+(function () {
+    'use strict';
+    
+    angular.module('app.auth', ['ngRoute', 'ngResource', 'ngCookies', 'ControlsModule']);
+})();
+/**
+ * Created by User on 15.06.2016.
+ */
+angular.module('UploadModule', ['ngResource']);
+
+(function () {
+    'use strict';
+    angular.module('ContentModule').factory('ContentResource', ContentResource);
+
+    ContentResource.$inject = ['$resource'];
+    function ContentResource($resource) {
+        return $resource('api/content/{id}');
+    }
+})();
 /**
  * Created by goodl on 3/9/2016.
  */
 (function () {
     "use strict";
-    angular.module('ContentServices', ['ngResource']).service('ContentService', ContentService);
+    angular.module('ContentServices', ['ngResource'])
+        .factory('ContentService', ContentService);
 
+    ContentService.$inject = ['$resource'];
     function ContentService($resource) {
-        "ngInject";
-
         var self = this;
         var Content = $resource('/rest/content', {}, {});
         self.findContent = findContent;
@@ -272,6 +292,105 @@
         };
     }
 })();
+(function () {
+    'use strict';
+    angular.module('app.auth').controller('LoginController', LoginController);
+
+    LoginController.$inject = ['AuthService', "$location", '$scope'];
+    function LoginController(AuthService, $location, $scope) {
+        var self = this;
+
+        self.auth = auth;
+
+        $scope.$on('oauth:login', function (token) {
+            console.log(AuthService.isAuthenticated);
+            if (AuthService.isAuthenticated) {
+                $location.path('/');
+            }
+        });
+
+        function auth(login, password) {
+            AuthService.login(login, password);
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular.module('app.auth')
+        .run(RouteInterceptor)
+        .config(RouteConfig);
+
+    RouteConfig.$inject = ['$routeProvider'];
+    function RouteConfig($routeProvider) {
+        $routeProvider.when('/login', {
+            templateUrl: '/app/login/login.html'
+        });
+    }
+
+    RouteInterceptor.$inject = ['$rootScope', '$location', 'AuthService'];
+    function RouteInterceptor($rootScope, $location, AuthService) {
+        $rootScope.$on('$routeChangeStart', function (event, next, current) {
+            //jshint debug: true
+            debugger;
+            console.log(AuthService.isAuthenticated + ' : ' + next.$$route.originalPath);
+            if (!AuthService.isAuthenticated && next.$$route.originalPath != '/login') {
+
+                event.preventDefault();
+
+                console.log('need auth');
+                $location.path('/login');
+            }
+        });
+    }
+})();
+(function () {
+    angular.module('app.auth')
+        .factory('AuthService', AuthService)
+        .factory('AuthResource', AuthResource);
+
+    AuthService.$inject = ['AuthResource', '$http', '$httpParamSerializer', '$cookies', '$rootScope'];
+    function AuthService(AuthResource, $http, $httpParamSerializer, $cookies, $rootScope) {
+        var self = this;
+
+        self.isAuthenticated = false;
+        self.login = login;
+
+        function login(email, password) {
+            AuthResource.auth($httpParamSerializer(
+                {
+                    scope: 'ui',
+                    username: email,
+                    password: password,
+                    grant_type: 'password'
+                }
+            )).$promise.then(function (data) {
+                $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
+                $cookies.put("access_token", data.access_token);
+                self.isAuthenticated = true;
+                $rootScope.$broadcast('oauth:login', data);
+                console.log(data);
+            }, function () {
+                self.isAuthenticated = false;
+                $rootScope.$emit('oauth:login');
+            });
+        }
+
+        return self;
+    }
+
+    AuthResource.$inject = ['$resource'];
+    function AuthResource($resource) {
+        return $resource('/api/auth/:path/:token', {}, {
+            'auth': {
+                method: 'POST', params: {path: 'oauth', token: 'token'}, isArray: false, headers: {
+                    'Authorization': 'Basic YnJvd3Nlcjo=',
+                    'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'
+                }
+            }
+        });
+    }
+})();
 /**
  * Created by goodl on 3/21/2016.
  */
@@ -300,9 +419,7 @@
         }
     }
 
-    function ProfileCtrl($scope) {
-        'ngInject';
-        
+    function ProfileCtrl() {
     }
     
 })();
@@ -370,35 +487,29 @@
     });
 })();
 /**
- * Created by Braidner on 06/03/2016.
+ * Created by User on 15.06.2016.
  */
 (function () {
     'use strict';
-
-    angular.module('UploadModule', ['ngResource']);
-    angular.module('UploadModule').config(RouteConfig);
     angular.module('UploadModule').controller('UploadCtrl', UploadCtrl);
-    angular.module('UploadModule').factory('UploadData', UploadData);
 
-    RouteConfig.$inject = ['$routeProvider'];
-    function RouteConfig($routeProvider) {
-        $routeProvider.when('/upload', {
-            templateUrl: '/app/upload/upload.html',
-            controller: 'UploadCtrl'
-        });
-    }
-    
-
-    UploadCtrl.$inject = ['$scope', 'UploadData'];
-    function UploadCtrl($scope, UploadData) {
+    UploadCtrl.$inject = ['UploadData', 'UploadService'];
+    function UploadCtrl(UploadData, UploadService) {
+        var self = this;
         var content = UploadData.get();
-        console.log(content);
         UploadData.set(null);
-        console.log(content);
         if (content) {
-            $scope.content = content;
+            self.content = content;
         }
+
+        self.createContent = UploadService.createContent;
     }
+})();
+(function () {
+    'use strict';
+    
+    angular.module('UploadModule')
+        .factory('UploadData', UploadData);
 
     function UploadData() {
         var uploadData = {};
@@ -414,7 +525,65 @@
             get: get
         };
     }
+    
+})();
+/**
+ * Created by User on 15.06.2016.
+ */
+(function () {
+    'use strict';
+    angular.module('UploadModule').config(RouteConfig);
 
+    RouteConfig.$inject = ['$routeProvider'];
+    function RouteConfig($routeProvider) {
+        $routeProvider.when('/upload', {
+            templateUrl: '/app/upload/upload.html'
+        });
+    }
+    
+})();
+/**
+ * Created by User on 15.06.2016.
+ */
+(function () {
+    'use strict';
+    angular.module('UploadModule').service('UploadService', UploadService);
+
+    UploadService.$inject = ['UploadData', 'ContentResource'];
+    function UploadService(uploadData, ContentResource) {
+        var self = this;
+
+        self.createContent = createContent;
+
+        function createContent() {
+            var content = uploadData.get();
+            var createdContent = new ContentResource(content);
+            return createdContent.id;
+        }
+
+        return self;
+    }
+})();
+(function () {
+    angular.module('control.input-chunk', []);
+    angular.module('control.input-chunk')
+        .directive('lmInputChunk', inputChunk);
+    
+    
+    function inputChunk() {
+        return {
+            scope: {
+                bindModel:'=ngModel'
+            },
+            require: 'ngModel',
+            // replace: true,
+            transclude: true,
+            'templateUrl': '/app/control/input-chunk/input-chunk.html',
+            link: function (scope, elem, attr, ngModel) {
+                "use strict";
+            }
+        };
+    }
 })();
 /**
  * Created by goodl on 4/2/2016.
@@ -440,27 +609,6 @@ function lmInput() {
         }
     };
 }
-(function () {
-    angular.module('control.input-chunk', []);
-    angular.module('control.input-chunk')
-        .directive('lmInputChunk', inputChunk);
-    
-    
-    function inputChunk() {
-        return {
-            scope: {
-                bindModel:'=ngModel'
-            },
-            require: 'ngModel',
-            // replace: true,
-            transclude: true,
-            'templateUrl': '/app/control/input-chunk/input-chunk.html',
-            link: function (scope, elem, attr, ngModel) {
-                "use strict";
-            }
-        };
-    }
-})();
 /**
  * Created by KuznetsovNE on 04.04.2016.
  */

@@ -8,8 +8,7 @@
     RouteConfig.$inject = ['$routeProvider'];
     function RouteConfig($routeProvider) {
         $routeProvider.when('/upload', {
-            templateUrl: '/app/upload/upload.html',
-            controller: 'UploadCtrl'
+            templateUrl: '/app/upload/upload.html'
         });
     }
     

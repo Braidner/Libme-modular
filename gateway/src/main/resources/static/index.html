@@ -19,7 +19,7 @@
 </head>
 <body ng-app="App">
 
-<nav class="fixed-top" ng-controller="NavigationCtrl">
+<nav class="fixed-top" ng-hide="activeTab === '/login'" ng-controller="NavigationCtrl">
     <div class="container content center-block">
         <div class="row">
             <div id="logo" class="col-md-2">
@@ -62,11 +62,12 @@
 <!-- Scripts -->
 <script src="lib/angular/angular.min.js" type="text/javascript"></script>
 <script src="lib/angular/angular-route.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-cookies.min.js" type="text/javascript"></script>
 <script src="lib/angular/angular-animate.min.js" type="text/javascript"></script>
 <script src="lib/angular/angular-messages.min.js" type="text/javascript"></script>
 <script src="lib/angular/angular-resource.min.js" type="text/javascript"></script>
 
-<script src="dist/all.min.js" type="text/javascript"></script>
+<script src="dist/all.js" type="text/javascript"></script>
 <script src="lib/video/clappr.min.js" type="text/javascript"></script>
 
 <script>
