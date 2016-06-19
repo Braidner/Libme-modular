@@ -5,6 +5,8 @@
     LoginController.$inject = ['AuthService', "$location", '$scope'];
     function LoginController(AuthService, $location, $scope) {
         var self = this;
+        self.email = 'Braidner';
+        self.password = '12345';
 
         self.auth = auth;
 

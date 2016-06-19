@@ -8,7 +8,7 @@
     RouteConfig.$inject = ['$routeProvider'];
     function RouteConfig($routeProvider) {
         $routeProvider.when('/login', {
-            templateUrl: '/app/login/login.html'
+            templateUrl: '/app/auth/login.html'
         });
     }
 

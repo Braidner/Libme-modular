@@ -14,6 +14,5 @@ import java.util.List;
 public interface ContentRepository extends MongoRepository<Content, String> {
 
     List<Content> findByName(String name);
-    List<Content> findByNameAndType(String name, Content.ContentType type);
     Film findByKinopoiskId(String kinopoiskId);
 }

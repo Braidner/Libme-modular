@@ -9,13 +9,17 @@ angular.module('control.input-control', [])
 function lmInput() {
     return {
         scope: {
-            bindModel:'=ngModel'
+            bindModel:'=ngModel',
+            datatype: '@'
         },
         require: 'ngModel',
         transclude: true,
         'templateUrl': '/app/control/input/input-control.html',
         link: function (scope, elem, attr, ngModel) {
             "use strict";
+            if (!scope.datatype) {
+                scope.datatype = 'text';
+            }
             // elem.on('click', function () {
             //     elem.addClass('lm-input-focused');
             // });

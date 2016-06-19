@@ -5,14 +5,7 @@ package org.libme.content.domain;
  */
 public class Film extends Content {
 
-    public static final ContentType TYPE = ContentType.FILM;
-
     private String kinopoiskId;
-
-    @Override
-    public ContentType getType() {
-        return TYPE;
-    }
 
     public String getKinopoiskId() {
         return kinopoiskId;

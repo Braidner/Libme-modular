@@ -7,14 +7,7 @@ import java.util.List;
  */
 public class Book extends Content {
 
-    public final static ContentType TYPE = ContentType.BOOK;
-
     private List<String> authors;
-
-    @Override
-    public ContentType getType() {
-        return TYPE;
-    }
 
     public List<String> getAuthors() {
         return authors;

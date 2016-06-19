@@ -27,6 +27,7 @@ zuul:
     content-service:
         path: /content/**
         serviceId: content-service
+        sensitiveHeaders: FuckingHackForZUULfilterCouseHeDropsAuthHeader
         stripPrefix: false
 
     torrent-service:

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
  * Created by Braidner
  */
 @RestController
+@RequestMapping("resource")
 public class ContentController {
 
     @Autowired
@@ -22,9 +23,11 @@ public class ContentController {
     private TorrentClient torrentClient;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String uploadContent(Content content, MultipartFile file) {
+    public String uploadContent(Content content
+//                                MultipartFile file
+    ) {
 
-        torrentClient.downloadTorrent(file); //TODO  send meta info like name, save folder etc.
+        torrentClient.downloadTorrent(null); //TODO  send meta info like name, save folder etc.
         return "";
     }
 }

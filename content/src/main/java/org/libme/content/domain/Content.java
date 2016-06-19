@@ -1,5 +1,7 @@
 package org.libme.content.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.libme.model.domain.User;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,7 +15,12 @@ import java.util.List;
  * Created by Braidner
  */
 @Document(collection = "content")
-public abstract class Content implements Serializable {
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="jsonType")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value=Book.class, name="book"),
+        @JsonSubTypes.Type(value=Film.class, name="film")
+})
+public class Content implements Serializable {
     @Id
     private String id;
 
@@ -22,7 +29,7 @@ public abstract class Content implements Serializable {
 
     private String posterUrl;
 
-    public abstract ContentType getType();
+    private String type = getClass().getSimpleName().toLowerCase();
 
     @Valid
     private List<User> seeders;
@@ -78,9 +85,11 @@ public abstract class Content implements Serializable {
         return result;
     }
 
-    public enum ContentType {
-        FILM,
-        MUSIC,
-        BOOK
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

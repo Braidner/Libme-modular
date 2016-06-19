@@ -134,6 +134,11 @@
 
 
 })();
+(function () {
+    'use strict';
+    
+    angular.module('app.auth', ['ngRoute', 'ngResource', 'ngCookies', 'ControlsModule']);
+})();
 /**
  * Created by goodl on 3/9/2016.
  */
@@ -174,11 +179,6 @@
         $scope.content = ContentService.findContent(null, 'Serial');
     }
 })();
-(function () {
-    'use strict';
-    
-    angular.module('app.auth', ['ngRoute', 'ngResource', 'ngCookies', 'ControlsModule']);
-})();
 /**
  * Created by User on 15.06.2016.
  */
@@ -186,119 +186,13 @@ angular.module('UploadModule', ['ngResource']);
 
 (function () {
     'use strict';
-    angular.module('ContentModule').factory('ContentResource', ContentResource);
-
-    ContentResource.$inject = ['$resource'];
-    function ContentResource($resource) {
-        return $resource('api/content/{id}');
-    }
-})();
-/**
- * Created by goodl on 3/9/2016.
- */
-(function () {
-    "use strict";
-    angular.module('ContentServices', ['ngResource'])
-        .factory('ContentService', ContentService);
-
-    ContentService.$inject = ['$resource'];
-    function ContentService($resource) {
-        var self = this;
-        var Content = $resource('/rest/content', {}, {});
-        self.findContent = findContent;
-        self.createContent = createContent;
-
-        function findContent(name, type) {
-            return Content.query({name: name, type: type});
-        }
-
-        function createContent(contentData) {
-            var content = new Content(contentData);
-            content.$save();
-            return content;
-        }
-        
-        return self;
-    }
-})();
-
-/**
- * Created by goodl on 3/13/2016.
- */
-(function () {
-    angular.module('ContentCardModule', []);
-    
-    angular.module('ContentCardModule')
-        .config(RouteConfig)
-        .controller('FilmCardCtrl', FilmCardCtrl)
-        .controller('SerialCardCtrl', SerialCardCtrl);
-
-    function RouteConfig($routeProvider) {
-        "ngInject";
-        $routeProvider.when('/film/:content_id', {
-            templateUrl: '/app/content-card/content-card.html',
-            controller: 'FilmCardCtrl'
-        }).when('/serial/:content_id', {
-            templateUrl: '/app/content-card/content-card.html',
-            controller: 'SerialCardCtrl'
-        });
-    }
-
-    function FilmCardCtrl() {
-        "ngInject";
-    }
-
-    function SerialCardCtrl() {
-        "ngInject";
-    }
-    
-})();
-/**
- * Created by goodl on 3/9/2016.
- */
-(function () {
-    angular.module('ItemModule', [])
-        .directive('contentItem', contentItem);
-
-    contentItem.$inject = ['$location'];
-    function contentItem($location) {
-        "ngInject";
-        function linker(scope, element, attr) {
-            element.on('click', function (event) {
-                $location.path("/" + angular.lowercase(scope.item.type) +"/" + scope.item.id);
-                scope.$apply();
-            });
-        }
-        return {
-            link: linker,
-            restrict: 'E',
-            replace: true,
-            scope: {
-                item: '='
-            },
-            templateUrl: '/app/item/item.html'
-        };
-    }
-})();
-/**
- * Created by goodl on 4/2/2016.
- */
-(function() {
-    "use strict";
-
-    angular.module('ControlsModule', [
-        'control.input-control', 
-        'control.parser',
-        'control.input-chunk'
-    ]);
-})();
-(function () {
-    'use strict';
     angular.module('app.auth').controller('LoginController', LoginController);
 
     LoginController.$inject = ['AuthService', "$location", '$scope'];
     function LoginController(AuthService, $location, $scope) {
         var self = this;
+        self.email = 'Braidner';
+        self.password = '12345';
 
         self.auth = auth;
 
@@ -324,7 +218,7 @@ angular.module('UploadModule', ['ngResource']);
     RouteConfig.$inject = ['$routeProvider'];
     function RouteConfig($routeProvider) {
         $routeProvider.when('/login', {
-            templateUrl: '/app/login/login.html'
+            templateUrl: '/app/auth/login.html'
         });
     }
 
@@ -389,6 +283,115 @@ angular.module('UploadModule', ['ngResource']);
                 }
             }
         });
+    }
+})();
+(function () {
+    'use strict';
+    angular.module('ContentModule').factory('ContentResource', ContentResource);
+
+    ContentResource.$inject = ['$resource'];
+    function ContentResource($resource) {
+        return $resource('api/content/{id}');
+    }
+})();
+/**
+ * Created by goodl on 3/9/2016.
+ */
+(function () {
+    "use strict";
+    angular.module('ContentServices', ['ngResource'])
+        .factory('ContentService', ContentService);
+
+    ContentService.$inject = ['$resource'];
+    function ContentService($resource) {
+        var self = this;
+        var Content = $resource('/api/content/resource', {}, {});
+        self.findContent = findContent;
+        self.createContent = createContent;
+
+        function findContent(name, type) {
+            return Content.query({name: name, type: type});
+        }
+
+        function createContent(contentData) {
+            contentData.type = 'film';
+            var content = new Content(contentData);
+            content.$save();
+            return content;
+        }
+        
+        return self;
+    }
+})();
+
+/**
+ * Created by goodl on 3/13/2016.
+ */
+(function () {
+    angular.module('ContentCardModule', []);
+    
+    angular.module('ContentCardModule')
+        .config(RouteConfig)
+        .controller('FilmCardCtrl', FilmCardCtrl)
+        .controller('SerialCardCtrl', SerialCardCtrl);
+
+    function RouteConfig($routeProvider) {
+        "ngInject";
+        $routeProvider.when('/film/:content_id', {
+            templateUrl: '/app/content-card/content-card.html',
+            controller: 'FilmCardCtrl'
+        }).when('/serial/:content_id', {
+            templateUrl: '/app/content-card/content-card.html',
+            controller: 'SerialCardCtrl'
+        });
+    }
+
+    function FilmCardCtrl() {
+        "ngInject";
+    }
+
+    function SerialCardCtrl() {
+        "ngInject";
+    }
+    
+})();
+/**
+ * Created by goodl on 4/2/2016.
+ */
+(function() {
+    "use strict";
+
+    angular.module('ControlsModule', [
+        'control.input-control', 
+        'control.parser',
+        'control.input-chunk'
+    ]);
+})();
+/**
+ * Created by goodl on 3/9/2016.
+ */
+(function () {
+    angular.module('ItemModule', [])
+        .directive('contentItem', contentItem);
+
+    contentItem.$inject = ['$location'];
+    function contentItem($location) {
+        "ngInject";
+        function linker(scope, element, attr) {
+            element.on('click', function (event) {
+                $location.path("/" + angular.lowercase(scope.item.type) +"/" + scope.item.id);
+                scope.$apply();
+            });
+        }
+        return {
+            link: linker,
+            restrict: 'E',
+            replace: true,
+            scope: {
+                item: '='
+            },
+            templateUrl: '/app/item/item.html'
+        };
     }
 })();
 /**
@@ -493,16 +496,20 @@ angular.module('UploadModule', ['ngResource']);
     'use strict';
     angular.module('UploadModule').controller('UploadCtrl', UploadCtrl);
 
-    UploadCtrl.$inject = ['UploadData', 'UploadService'];
-    function UploadCtrl(UploadData, UploadService) {
+    UploadCtrl.$inject = ['UploadData', 'ContentService'];
+    function UploadCtrl(UploadData, ContentService) {
         var self = this;
+        self.save = save;
         var content = UploadData.get();
         UploadData.set(null);
         if (content) {
             self.content = content;
         }
 
-        self.createContent = UploadService.createContent;
+        function save() {
+            console.log(self.content);
+            ContentService.createContent(self.content);
+        }
     }
 })();
 (function () {
@@ -575,13 +582,17 @@ angular.module('control.input-control', [])
 function lmInput() {
     return {
         scope: {
-            bindModel:'=ngModel'
+            bindModel:'=ngModel',
+            datatype: '@'
         },
         require: 'ngModel',
         transclude: true,
         'templateUrl': '/app/control/input/input-control.html',
         link: function (scope, elem, attr, ngModel) {
             "use strict";
+            if (!scope.datatype) {
+                scope.datatype = 'text';
+            }
             // elem.on('click', function () {
             //     elem.addClass('lm-input-focused');
             // });

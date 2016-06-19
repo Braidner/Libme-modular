@@ -5,15 +5,19 @@
     'use strict';
     angular.module('UploadModule').controller('UploadCtrl', UploadCtrl);
 
-    UploadCtrl.$inject = ['UploadData', 'UploadService'];
-    function UploadCtrl(UploadData, UploadService) {
+    UploadCtrl.$inject = ['UploadData', 'ContentService'];
+    function UploadCtrl(UploadData, ContentService) {
         var self = this;
+        self.save = save;
         var content = UploadData.get();
         UploadData.set(null);
         if (content) {
             self.content = content;
         }
 
-        self.createContent = UploadService.createContent;
+        function save() {
+            console.log(self.content);
+            ContentService.createContent(self.content);
+        }
     }
 })();

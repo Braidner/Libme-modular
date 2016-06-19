@@ -9,7 +9,7 @@
     ContentService.$inject = ['$resource'];
     function ContentService($resource) {
         var self = this;
-        var Content = $resource('/rest/content', {}, {});
+        var Content = $resource('/api/content/resource', {}, {});
         self.findContent = findContent;
         self.createContent = createContent;
 
@@ -18,6 +18,7 @@
         }
 
         function createContent(contentData) {
+            contentData.type = 'film';
             var content = new Content(contentData);
             content.$save();
             return content;
