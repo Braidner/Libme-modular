@@ -23,11 +23,9 @@ public class ContentController {
     private TorrentClient torrentClient;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String uploadContent(Content content
-//                                MultipartFile file
-    ) {
+    public String uploadContent(Content content, MultipartFile file) {
 
-        torrentClient.downloadTorrent(null); //TODO  send meta info like name, save folder etc.
+        torrentClient.downloadTorrent(file); //TODO  send meta info like name, save folder etc.
         return "";
     }
 }

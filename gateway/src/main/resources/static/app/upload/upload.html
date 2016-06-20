@@ -1,8 +1,6 @@
 <div class="container content upload-container" ng-controller="UploadCtrl as upload">
     <form name="uploadForm" ng-submit="upload.save()">
         <div class="row">
-            <!--<div class="input-name col-md-offset-2 col-md-4"><input name="name" placeholder="Название фильма"></div>-->
-            <!--<div class="input-genre col-md-4"><input name="genre" placeholder="Жанр"></div>-->
             <lm-input class="col-md-offset-2 col-md-4" ng-model="upload.content.name">Название фильма<span class="yellow">*</span></lm-input>
             <lm-input-chunk class="col-md-4" ng-model="upload.content.genres">Жанр<span class="yellow">*</span></lm-input-chunk>
         </div>
@@ -10,13 +8,13 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8" ng-click="">
                 <div class="input-video text-center empty">
-                    <label for="input-video">
+                    <label  ngf-drop ng-model="upload.uploadFile">
                         <i class="fa fa-video-camera"></i> <br>
                         <span>Добавить видео</span>
                     </label>
                 </div>
             </div>
-            <input name="video" ng-model="upload.content.uploadFile" type="file" multiple id="input-video" class="text-center hidden" placeholder="Добавить видео">
+            <!--<input name="video" ngf-select ng-model="upload.uploadFile" type="file" multiple id="input-video" class="hidden">-->
         </div>
 
         <div class="row">
