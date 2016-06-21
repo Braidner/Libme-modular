@@ -13,6 +13,7 @@ ribbon:
 zuul:
   ignoredServices: '*'
   prefix: /api
+  sensitiveHeaders: FuckingHackForZUULfilterCouseHeDropsAuthHeader
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
@@ -21,13 +22,11 @@ zuul:
     auth-service:
         path: /auth/**
         url: http://localhost:5000
-        sensitiveHeaders: FuckingHackForZUULfilterCouseHeDropsAuthHeader
         stripPrefix: false
 
     content-service:
         path: /content/**
         serviceId: content-service
-        sensitiveHeaders: FuckingHackForZUULfilterCouseHeDropsAuthHeader
         stripPrefix: false
 
     torrent-service:

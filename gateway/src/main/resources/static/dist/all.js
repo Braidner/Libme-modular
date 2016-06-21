@@ -509,12 +509,14 @@ angular.module('UploadModule', ['ngResource', 'ngFileUpload', 'ngCookies']);
         }
 
         function save() {
+            //jshint debug: true
+            debugger;
             console.log(self.content);
             self.content.type = 'film';
 
             self.uploadFile.upload = Upload.upload({
                 url: '/api/content/resource',
-                data: {content: content, file: self.uploadFile}
+                data: {content: JSON.stringify(content), file: self.uploadFile}
             });
 
             self.uploadFile.upload.then(function (response) {

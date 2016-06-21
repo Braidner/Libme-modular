@@ -15,10 +15,10 @@ import java.util.List;
  * Created by Braidner
  */
 @Document(collection = "content")
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="jsonType")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value=Book.class, name="book"),
-        @JsonSubTypes.Type(value=Film.class, name="film")
+        @JsonSubTypes.Type(value = Book.class, name = "book"),
+        @JsonSubTypes.Type(value = Film.class, name = "film")
 })
 public class Content implements Serializable {
     @Id

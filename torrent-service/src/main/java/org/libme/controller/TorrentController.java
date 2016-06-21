@@ -25,7 +25,7 @@ public class TorrentController {
     private TorrentClient torrentClient;
 
     @RequestMapping
-    public String download(@RequestParam("file") MultipartFile file) throws IOException {
+    public String downloadTorrent(@RequestParam("file") MultipartFile file) throws IOException {
         Client downloadClient = torrentClient.download(file.getBytes());
         downloadClient.addObserver((observable, arg) -> {
             Client client = (Client) observable;

@@ -2,8 +2,8 @@ security:
   oauth2:
     client:
       clientId: torrent-service
-      clientSecret: ${TORRENT_SERVICE_PASSWORD}
-      accessTokenUri: http://{DEBUG_HOSTNAME:auth}:5000/auth/oauth/token
+      clientSecret: ${CONTENT_SERVICE_PASSWORD}
+      accessTokenUri: http://${DEBUG_HOSTNAME:auth}:5000/auth/oauth/token
       grant-type: client_credentials
       scope: server
 
