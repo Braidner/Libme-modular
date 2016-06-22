@@ -27,21 +27,24 @@ Then start docker compose with
 open http://localhost/ or http://docker.local/
 
 ##TODO list
+### BUILD
+- [ ] Add docker building stage to maven with com.spotify:docker-maven-plugin
+
 ### Content service
-- [ ] Доверстать форму загрузки
-- [ ] Сделать рест сервис сохранения формы
-- [ ] Сделать возвожность аплоада файлов
+- [ ] Finish create content form
+- [x] Rest service for saving content data
+- [x] Add file upload
 
 ### Registration service
-- [ ] Сверстать форму регистрации
-- [ ] Сделать сервис создания пользователя
-- [ ] Сверстать форму авторизации
-- [ ] Сделать в андгуларе сервис авторизации и обновления токенов
+- [ ] Create registration form
+- [ ] Create user creation service
+- [x] Create login form
+- [x] Create oauth2 service
 
 ### Torrent service
-- [ ] Реализовать торрент севрис
-- [ ] Реализовать нотификацию торрент-сервиса
+- [x] Create torrent service
+- [ ] Add notify system about torrents
 
 ### Convert service
-- [ ] Сделать докер образ с установленным ffmpeg
-- [ ] Сделать сервис конвертирующий видео файлы в стрименговые
+- [ ] Create docker image with ffmpeg
+- [ ] Create convert service from .avi files to .ts files
