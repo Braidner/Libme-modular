@@ -7,6 +7,7 @@ import org.libme.TorrentService;
 import org.libme.client.TorrentClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,7 @@ public class TorrentController {
     @Autowired
     private TorrentClient torrentClient;
 
-    @RequestMapping
+    @RequestMapping(path = "download", method = RequestMethod.POST)
     public String downloadTorrent(@RequestParam("file") MultipartFile file) throws IOException {
         Client downloadClient = torrentClient.download(file.getBytes());
         downloadClient.addObserver((observable, arg) -> {
@@ -36,6 +37,12 @@ public class TorrentController {
             log.info("Torrent progress: " + progress);
         });
         return "download started";
+    }
+
+    @RequestMapping("test")
+    public String test() {
+        System.out.println("asdasdasd");
+        return "test";
     }
 
 }

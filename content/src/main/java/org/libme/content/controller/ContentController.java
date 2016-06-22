@@ -35,6 +35,7 @@ public class ContentController {
 //            @RequestParam String contentJson,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
+        String test = torrentClient.test();
         Content content = MAPPER.readValue(params.get("content"), Content.class);
         System.out.println(content);
         System.out.println(file.getOriginalFilename());
