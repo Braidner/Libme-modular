@@ -25,3 +25,10 @@ security:
 spring:
   rabbitmq:
     host: ${DEBUG_HOSTNAME:rabbitmq}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
+    region: eu-west-1

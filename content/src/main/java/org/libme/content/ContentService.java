@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 /**
  * Created by Braidner
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.libme"})
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableOAuth2Client

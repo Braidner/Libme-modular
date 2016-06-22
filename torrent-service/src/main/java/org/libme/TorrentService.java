@@ -3,6 +3,7 @@ package org.libme;
 import feign.RequestInterceptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.libme.model.config.AmazonConfig;
 import org.libme.model.service.CustomUserInfoTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -27,7 +28,7 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 /**
  * Created by Braidner
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = {AmazonConfig.class})
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableOAuth2Client
