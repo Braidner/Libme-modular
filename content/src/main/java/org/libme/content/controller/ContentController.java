@@ -7,6 +7,7 @@ import org.libme.content.domain.Content;
 import org.libme.content.service.ContentService;
 import org.libme.model.service.TorrentCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,8 @@ public class ContentController {
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(100);
 
     @Autowired
-    private ContentService serverContentService;
+    @Qualifier("userContentService")
+    private ContentService contentService;
 
     @Autowired
     private TorrentClient torrentClient;
@@ -45,10 +47,11 @@ public class ContentController {
     ) throws IOException {
         Content content = MAPPER.readValue(params.get("content"), Content.class);
         byte[] bytes = file.getBytes();
+        Content savedContent = contentService.save(content);
         EXECUTOR_SERVICE.submit(() -> {
-            String fileKey = content.getId() + System.nanoTime();
+            String fileKey = savedContent.getId() + System.nanoTime();
             torrentCacheService.upload(fileKey, new ByteInputStream(bytes, bytes.length));
-            torrentClient.downloadTorrent(content.getId(), fileKey);
+            torrentClient.downloadTorrent(savedContent.getId(), fileKey);
         });
         return "";
     }

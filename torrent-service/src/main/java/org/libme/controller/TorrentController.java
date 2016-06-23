@@ -32,6 +32,7 @@ public class TorrentController {
 
     @RequestMapping(path = "download", method = RequestMethod.POST)
     public String downloadTorrent(@RequestParam String contentId, @RequestParam String fileKey) throws IOException {
+        log.info("Downloading torrent for: " + contentId);
         InputStream torrentStream = torrentCacheService.download(fileKey);
         Client downloadClient = torrentClient.download(IOUtils.toByteArray(torrentStream));
         downloadClient.addObserver((observable, arg) -> {
@@ -39,6 +40,7 @@ public class TorrentController {
             float progress = client.getTorrent().getCompletion();
             if (client.getTorrent().isComplete()) {
                 //TODO sent to convert
+                log.info("Torrent downloaded");
             }
             log.info("Torrent progress: " + progress);
         });

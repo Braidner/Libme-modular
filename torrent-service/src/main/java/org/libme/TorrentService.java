@@ -1,14 +1,15 @@
 package org.libme;
 
 import feign.RequestInterceptor;
+import org.apache.catalina.filters.RequestDumperFilter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.libme.model.config.AmazonConfig;
 import org.libme.model.service.CustomUserInfoTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -25,10 +26,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
+import javax.servlet.Filter;
+
 /**
  * Created by Braidner
  */
-@SpringBootApplication(scanBasePackageClasses = {AmazonConfig.class})
+@SpringBootApplication(scanBasePackages = {"org.libme"})
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableOAuth2Client

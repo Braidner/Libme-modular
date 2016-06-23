@@ -1,6 +1,5 @@
 package org.libme.content.client;
 
-import org.libme.model.config.FeignFormConfig;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by Braidner
  */
-@FeignClient(serviceId = "torrent-service", configuration = FeignFormConfig.class)
+@FeignClient(serviceId = "torrent-service")
 public interface TorrentClient {
 
     /**

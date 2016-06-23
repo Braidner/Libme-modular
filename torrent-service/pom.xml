@@ -82,6 +82,11 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.turn</groupId>
             <artifactId>ttorrent-core</artifactId>
             <version>1.5</version>

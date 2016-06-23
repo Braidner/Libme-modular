@@ -76,6 +76,11 @@
         </dependency>
 
         <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.libme</groupId>
             <artifactId>model</artifactId>
             <version>1.0</version>

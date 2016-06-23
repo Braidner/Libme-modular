@@ -10,4 +10,6 @@ import java.util.List;
 public interface ContentService {
 
     List<Content> findResent();
+
+    Content save(Content content);
 }

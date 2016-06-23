@@ -25,6 +25,11 @@ public class ServerContentService implements ContentService {
         return recentPage.getContent();
     }
 
+    @Override
+    public Content save(Content content) {
+        return null;
+    }
+
     public void createContent(Content content) {
         if (content instanceof Film) {
             createFilm((Film) content);
