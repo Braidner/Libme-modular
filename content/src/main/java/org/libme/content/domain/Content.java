@@ -1,5 +1,6 @@
 package org.libme.content.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.libme.model.domain.User;
@@ -20,6 +21,7 @@ import java.util.List;
         @JsonSubTypes.Type(value = Book.class, name = "book"),
         @JsonSubTypes.Type(value = Film.class, name = "film")
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Content implements Serializable {
     @Id
     private String id;

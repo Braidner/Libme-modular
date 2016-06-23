@@ -11,5 +11,7 @@ public interface ContentService {
 
     List<Content> findResent();
 
+    List<Content> findAll();
+
     Content save(Content content);
 }

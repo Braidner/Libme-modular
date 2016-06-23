@@ -23,6 +23,11 @@ public class UserContentService implements ContentService {
     }
 
     @Override
+    public List<Content> findAll() {
+        return contentRepository.findAll();
+    }
+
+    @Override
     public Content save(Content content) {
         return contentRepository.save(content);
     }

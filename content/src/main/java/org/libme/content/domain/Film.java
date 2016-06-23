@@ -1,10 +1,13 @@
 package org.libme.content.domain;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 /**
  * Created by Braidner
  */
 public class Film extends Content {
 
+    @Indexed
     private String kinopoiskId;
     private String year;
 

@@ -10,14 +10,14 @@
     RecentCtrl.$inject = ['$scope'];
     function RecentCtrl($scope) {
         $scope.content = [
-            {name: 'Zootopia', poster: 'http://www.kinopoisk.ru/images/film_big/775276.jpg', id: 0, type: 'film'},
-            {name: 'Batman v Superman: Dawn of Justice', poster: 'http://www.kinopoisk.ru/images/film_big/770631.jpg', id: 0, type: 'film'},
-            {name: 'The Justice League Part One', poster: 'http://www.kinopoisk.ru/images/film_big/424994.jpg', id: 0, type: 'film'},
-            {name: 'The flash', poster: 'http://www.kinopoisk.ru/images/film_big/817506.jpg', id: 0, type: 'film'},
-            {name: 'The Justice League Part One', poster: 'http://www.kinopoisk.ru/images/film_big/424994.jpg', id: 0, type: 'film'},
-            {name: 'Frozen', poster: 'http://www.kinopoisk.ru/images/film_big/493208.jpg', id: 0, type: 'film'},
-            {name: 'Batman v Superman: Dawn of Justice', poster: 'http://www.kinopoisk.ru/images/film_big/770631.jpg', id: 0, type: 'film'},
-            {name: 'Untitled Spider-Man Reboot', poster: 'http://www.kinopoisk.ru/images/film_big/690593.jpg', id: 0, type: 'film'}
+            {name: 'Zootopia', kinopoiskId: 775276, id: 0, type: 'film'},
+            {name: 'Batman v Superman: Dawn of Justice', kinopoiskId: 770631, id: 0, type: 'film'},
+            {name: 'The Justice League Part One', kinopoiskId: 424994, id: 0, type: 'film'},
+            {name: 'The flash', kinopoiskId: 817506, id: 0, type: 'film'},
+            {name: 'The Justice League Part One', kinopoiskId: 424994, id: 0, type: 'film'},
+            {name: 'Frozen', kinopoiskId: 493208, id: 0, type: 'film'},
+            {name: 'Batman v Superman: Dawn of Justice', kinopoiskId: 770631, id: 0, type: 'film'},
+            {name: 'Untitled Spider-Man Reboot', kinopoiskId: 690593, id: 0, type: 'film'}
         ];
     }
 

@@ -4,24 +4,9 @@
 
 (function () {
     angular.module('ContentModule', ['ContentServices'])
-        .config(RouteConfig)
         .controller('AllContentCtrl', AllContentCtrl)
         .controller('SerialContentCtrl', SerialContentCtrl)
         .controller('FilmContentCtrl', FilmContentCtrl);
-
-    function RouteConfig($routeProvider) {
-        "ngInject";
-        $routeProvider.when('/', {
-            templateUrl: '/app/content/content.html',
-            controller: 'AllContentCtrl'
-        }).when('/film', {
-            templateUrl: '/app/content/content.html',
-            controller: 'FilmContentCtrl'
-        }).when('/serial', {
-            templateUrl: '/app/content/content.html',
-            controller: 'SerialContentCtrl'
-        });
-    }
 
     AllContentCtrl.$inject = ['$scope', 'ContentService'];
     function AllContentCtrl($scope, ContentService) {

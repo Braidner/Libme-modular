@@ -26,6 +26,11 @@ public class ServerContentService implements ContentService {
     }
 
     @Override
+    public List<Content> findAll() {
+        return null;
+    }
+
+    @Override
     public Content save(Content content) {
         return null;
     }
