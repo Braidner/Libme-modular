@@ -29,6 +29,6 @@ spring:
 cloud:
   aws:
     credentials:
-      accessKey: ${AWS_ACCESS_KEY}
-      secretKey: ${AWS_SECRET_KEY}
+      accessKey: ${AWS_ACCESS_KEY:none}
+      secretKey: ${AWS_SECRET_KEY:none}
     region: eu-west-1
