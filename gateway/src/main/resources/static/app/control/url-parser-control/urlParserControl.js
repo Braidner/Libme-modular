@@ -2,12 +2,14 @@
  * Created by KuznetsovNE on 04.04.2016.
  */
 (function () {
-    angular.module('control.parser', []);
+    angular.module('control.parser', ['ngResource']);
 
-    angular.module('ControlsModule').directive('lmUrlParser', lmUrlParser);
+    angular.module('ControlsModule')
+        .directive('lmUrlParser', lmUrlParser)
+        .factory('DiscoveryResource', DiscoveryResource);
 
-    lmUrlParser.$inject = ['$location', '$http', 'UploadData'];
-    function lmUrlParser($location, $http, UploadData) {
+    lmUrlParser.$inject = ['$location', 'UploadData', 'DiscoveryResource'];
+    function lmUrlParser($location, UploadData, DiscoveryResource) {
         return {
             scope: {
                 bindModel:'=ngModel'
@@ -19,14 +21,20 @@
             link: function (scope, elem, attr, ngModel) {
                 "use strict";
                 elem.find('.button').on('click', function () {
-                    $http.get('/rest/kinopoisk', {params: {url: scope.bindModel}}).then(function (responce) {
-                        responce.data.url = scope.bindModel;
-                        UploadData.set(responce.data);
+                    DiscoveryResource.get({id: scope.bindModel.match(/\/film\/(\d*)\//)[1]})
+                        .$promise.then(function (responce) {
+                        responce.url = scope.bindModel;
+                        UploadData.set(responce);
                         $location.path('/upload');
                     });
                 });
             }
         };
+    }
+
+    DiscoveryResource.$inject = ['$resource'];
+    function DiscoveryResource($resource) {
+        return $resource('/api/content/discovery/:id');
     }
 
 })();

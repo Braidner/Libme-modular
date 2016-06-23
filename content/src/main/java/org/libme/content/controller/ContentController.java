@@ -1,7 +1,6 @@
 package org.libme.content.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.libme.content.client.TorrentClient;
 import org.libme.content.domain.Content;
 import org.libme.content.service.ContentService;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -50,7 +50,7 @@ public class ContentController {
         Content savedContent = contentService.save(content);
         EXECUTOR_SERVICE.submit(() -> {
             String fileKey = savedContent.getId() + System.nanoTime();
-            torrentCacheService.upload(fileKey, new ByteInputStream(bytes, bytes.length));
+            torrentCacheService.upload(fileKey, new ByteArrayInputStream(bytes));
             torrentClient.downloadTorrent(savedContent.getId(), fileKey);
         });
         return "";
