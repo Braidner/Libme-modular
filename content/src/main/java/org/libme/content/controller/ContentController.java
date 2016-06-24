@@ -7,6 +7,7 @@ import org.libme.content.service.ContentService;
 import org.libme.model.service.TorrentCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,8 +44,8 @@ public class ContentController {
     @RequestMapping(method = RequestMethod.POST)
     public String uploadContent(
             @RequestParam Map<String,String> params,
-//            @RequestParam String contentJson,
-            @RequestParam(value = "file", required = false) MultipartFile file
+            @RequestParam(value = "file", required = false) MultipartFile file,
+            OAuth2Authentication principal
     ) throws IOException {
         Content content = MAPPER.readValue(params.get("content"), Content.class);
         Content savedContent = contentService.save(content);
@@ -53,7 +54,7 @@ public class ContentController {
             EXECUTOR_SERVICE.submit(() -> {
                 String fileKey = savedContent.getId() + System.nanoTime();
                 torrentCacheService.upload(fileKey, new ByteArrayInputStream(bytes));
-                torrentClient.downloadTorrent(savedContent.getId(), fileKey);
+                torrentClient.downloadTorrent(savedContent.getId(), fileKey, principal.getName());
             });
         }
         return "";

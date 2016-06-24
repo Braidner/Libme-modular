@@ -17,7 +17,11 @@ public interface TorrentClient {
      * @return return torrent id
      */
     @RequestMapping(method = RequestMethod.POST, path = "/torrent/download")
-    String downloadTorrent(@RequestParam("contentId") String contentId, @RequestParam("fileKey") String fileKey);
+    String downloadTorrent(
+            @RequestParam("contentId") String contentId,
+            @RequestParam("owner") String owner,
+            @RequestParam("fileKey") String fileKey
+    );
 
     @RequestMapping(method = RequestMethod.POST, path = "/torrent/test")
     String test();

@@ -31,8 +31,8 @@ public class TorrentController {
     private TorrentCacheService torrentCacheService;
 
     @RequestMapping(path = "download", method = RequestMethod.POST)
-    public String downloadTorrent(@RequestParam String contentId, @RequestParam String fileKey) throws IOException {
-        log.info("Downloading torrent for: " + contentId);
+    public String downloadTorrent(@RequestParam String contentId, @RequestParam String fileKey, @RequestParam String owner) throws IOException {
+        log.info("Downloading torrent for: " + contentId + " owner: " + owner);
         InputStream torrentStream = torrentCacheService.download(fileKey);
         Client downloadClient = torrentClient.download(IOUtils.toByteArray(torrentStream));
         downloadClient.addObserver((observable, arg) -> {
