@@ -28,7 +28,7 @@ public class HlsConvertServiceTest {
 
     @Test
     public void executeCommandLine() throws Exception {
-        convertService.executeCommandLine(new Commandline("ping ya.ru"));
+        convertService.executeCommandLine(new Commandline("mvn -v"));
     }
 
 }
