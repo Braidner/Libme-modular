@@ -25,13 +25,13 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 /**
  * Created by Braidner
  */
-@SpringBootApplication(scanBasePackages = {"org.libme"})
 @EnableResourceServer
-@EnableDiscoveryClient
 @EnableOAuth2Client
 @EnableFeignClients
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableDiscoveryClient
 @EnableConfigurationProperties
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@SpringBootApplication(scanBasePackages = {"org.libme"})
 public class ContentService extends ResourceServerConfigurerAdapter {
 
     @Autowired

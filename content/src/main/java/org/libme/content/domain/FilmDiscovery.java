@@ -1,19 +1,23 @@
 package org.libme.content.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 /**
  * Created by Braidner
  */
+@Document(collection = "DiscoverContent")
 public class FilmDiscovery {
 
-    
+    @Id
+    private String filmID;
     private Integer isHasSimilarFilms;
     private Integer reviewsCount;
 
 
     private Integer isHasSequelsAndPrequelsFilms;
-    private String filmID;
     private String webURL;
     private String nameRU;
     private String nameEN;
