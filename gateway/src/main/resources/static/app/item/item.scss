@@ -17,6 +17,7 @@ $name-height: 48px;
     margin-bottom: 10px;
     //-webkit-transition: box-shadow .2s, transform .2s, opacity .2s;
     @include transition(0.3s ease-in-out);
+    -webkit-transform: translate3d(0,0,0); //fix box-shadow artifacts for chrome
   }
 
   .name {

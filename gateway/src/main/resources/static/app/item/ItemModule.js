@@ -7,7 +7,6 @@
 
     contentItem.$inject = ['$location'];
     function contentItem($location) {
-        "ngInject";
         function linker(scope, element, attr) {
             element.on('click', function (event) {
                 $location.path("/" + angular.lowercase(scope.item.type) +"/" + scope.item.id);
